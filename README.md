@@ -4,3 +4,6 @@ The following API calls are defined:
 - GET /albums/:id
 - POST /albums
 - DELETE /albums/:id
+
+Docker image is created automatically using github actions
+
