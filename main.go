@@ -53,7 +53,11 @@ func main() {
 }
 
 func init_db(db string, c string) (*mongo.Client, []album) {
-	configFile, err := os.Open("config.json")
+	path, present := os.LookupEnv("CONFIG_PATH")
+	if !present {
+		path = "./"
+	}
+	configFile, err := os.Open(path + "config.json")
 	if err != nil {
 		panic("Could not open config file: " + err.Error())
 	}
