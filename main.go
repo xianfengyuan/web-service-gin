@@ -44,6 +44,7 @@ func main() {
 	}()
 
 	router := gin.Default()
+	router.GET("/", status)
 	router.GET("/albums", getAlbums)
 	router.GET("/albums/:id", getAlbumByID)
 	router.POST("/albums", postAlbums)
@@ -165,4 +166,8 @@ func deleteAlbumByID(c *gin.Context) {
 		}
 	}
 	c.IndentedJSON(http.StatusOK, gin.H{"message": "album deleted"})
+}
+
+func status(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, gin.H{"status": "ok"})
 }
